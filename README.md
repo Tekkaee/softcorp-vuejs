@@ -1,24 +1,29 @@
-# softcorp-vuejs
+# Softcorp
+Test task for Softcorp (vuejs edition)
 
-## Project setup
-```
+#### Github pages link
+https://tekkaee.github.io/softcorp-vuejs/
+
+
+## Installation
+```sh
+{root_project}
 yarn install
 ```
-
-### Compiles and hot-reloads for development
-```
+## Developer build
+```sh
+{root_project}
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
+## Production build
+```sh
+{root_project}
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Google page speed
+### Desktop test
+![Screenshot](desktop-test.png)
+### Mobile test
+![Screenshot](mobile-test.png)

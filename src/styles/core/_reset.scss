@@ -1,0 +1,81 @@
+$font-path: '@/assets/fonts';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  src: local("Lato"),
+  url($font-path + "/Lato/Lato-Regular.woff2") format("woff2");
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 600;
+  src: local("Lato"),
+  url($font-path + "/Lato/Lato-Medium.woff2") format("woff2");
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 700;
+  src: local("Lato"),
+  url($font-path + "/Lato/Lato-Bold.woff2") format("woff2");
+  text-rendering: optimizeLegibility;
+  font-display: auto;
+}
+
+button, textarea, input {
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  height: 100%;
+  scrollbar-color: #3E9CDC #3D4050;
+  font-size: 14px;
+  font-family: Lato, Arial, sans-serif;
+}
+
+body {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 3.5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3D4050;
+  border-radius: 3.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3E9CDC;
+  border-radius: 3.5px;
+}

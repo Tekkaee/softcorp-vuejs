@@ -1,20 +1,63 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
+interface NavbarRouteProps {
+  path: string;
+  title: string;
+}
+
+export const NAVBAR_ROUTES: Array<NavbarRouteProps> = [
+  {
+    path: "/business",
+    title: "Бизнес",
+  },
+  {
+    path: "/about",
+    title: "О нас",
+  },
+  {
+    path: "/prices",
+    title: "Цены",
+  },
+  {
+    path: "/make-order",
+    title: "Оформить заказ",
+  },
+];
+
+export const enum RouteList {
+  home = "/",
+  prices = "/prices",
+  about = "/about",
+  makeOrder = "/make-order",
+  business = "/business",
+}
+
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: RouteList.home,
     name: "home",
     component: HomeView,
   },
   {
-    path: "/about",
+    path: RouteList.about,
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: RouteList.makeOrder,
+    name: "makeOrder",
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: RouteList.prices,
+    name: "prices",
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: RouteList.business,
+    name: "business",
+    component: () => import("../views/AboutView.vue"),
   },
 ];
 

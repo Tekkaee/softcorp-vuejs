@@ -13,14 +13,4 @@ import Header from "@/components/Header.vue";
 
 <style lang="scss">
 @import "@/styles/core";
-
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.main {
-  display: flex;
-  flex-direction: column;
-}
 </style>

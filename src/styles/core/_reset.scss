@@ -79,3 +79,13 @@ ul, ol {
   background: #3E9CDC;
   border-radius: 3.5px;
 }
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}

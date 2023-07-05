@@ -30,7 +30,7 @@
       />
     </picture>
     <div class="container welcome__container">
-      <div class="welcome__content" data-observe>
+      <div class="welcome__content">
         <h1 class="welcome__title">
           <span class="text--accent">Lorem ipsum</span> dolor sit amet
           consectetur <span class="text--accent">adipiscing</span>

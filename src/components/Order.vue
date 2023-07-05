@@ -1,7 +1,27 @@
+<script lang="ts">
+import File from "@/components/form/File.vue";
+import Form from "@/components/form/Form.vue";
+import Input from "@/components/form/Input.vue";
+import Range from "@/components/form/Range.vue";
+import Select from "@/components/form/Select.vue";
+import StepList from "@/components/steps/StepList.vue";
+import { SELECT_OPTIONS } from "@/data/select-options";
+import { defineComponent, onMounted, ref } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
+export default defineComponent({
+  computed: {
+    SELECT_OPTIONS() {
+      return SELECT_OPTIONS;
+    },
+  },
+  components: { Range, Select, File, Form, Input, StepList },
+});
+</script>
+
 <template>
   <section class="order">
     <div class="container order__container">
-      <div class="order__header in-view" data-observe>
+      <div class="order__header" data-observe>
         <h2 class="order__title">
           Оформление <span class="text--accent">Заказа</span>
         </h2>
@@ -9,10 +29,10 @@
           Перед заполнением формы ознакомьтесь с нашей схемой работы!
         </h3>
       </div>
-      <div class="steps-order order__steps in-view" data-observe>
+      <div class="steps-order order__steps" data-observe>
         <StepList />
       </div>
-      <Form class="order__form">
+      <Form class="order__form" data-observe>
         <Select
           name="system-type"
           id="system-type"
@@ -27,29 +47,6 @@
     </div>
   </section>
 </template>
-
-<script lang="ts">
-import File from "@/components/form/File.vue";
-import Form from "@/components/form/Form.vue";
-import Input from "@/components/form/Input.vue";
-import Range from "@/components/form/Range.vue";
-import Select from "@/components/form/Select.vue";
-import StepList from "@/components/steps/StepList.vue";
-import { SELECT_OPTIONS } from "@/data/select-options";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  computed: {
-    SELECT_OPTIONS() {
-      return SELECT_OPTIONS;
-    },
-  },
-  components: { Range, Select, File, Form, Input, StepList },
-  setup() {
-    return {};
-  },
-});
-</script>
 
 <style lang="scss">
 @import "@/styles/core/support";

@@ -59,7 +59,10 @@ const routes: Array<RouteRecordRaw> = [
     name: "business",
     component: () => import("../views/AboutView.vue"),
   },
-  { path: "*", component: HomeView },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/",
+  },
 ];
 
 const router = createRouter({

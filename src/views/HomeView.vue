@@ -1,13 +1,32 @@
 <script lang="ts">
 import Order from "@/components/Order.vue";
 import Welcome from "@/components/Welcome.vue";
-import { defineComponent } from "vue";
+import { useIntersectionObserver } from "@vueuse/core";
+import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
-  name: "HomeView",
-  components: {
-    Order,
-    Welcome,
+  components: { Order, Welcome },
+  setup() {
+    const target = ref<HTMLElement[] | null>(null);
+
+    onMounted(() => {
+      target.value = document.querySelectorAll(
+        "[data-observe]"
+      ) as unknown as HTMLElement[];
+
+      target.value.forEach((el: any) => {
+        const { stop } = useIntersectionObserver(
+          el,
+          ([{ isIntersecting, target }], observerElement) => {
+            if (target.classList.contains("in-view")) return;
+
+            if (isIntersecting) {
+              target.classList.add("in-view");
+            }
+          }
+        );
+      });
+    });
   },
 });
 </script>

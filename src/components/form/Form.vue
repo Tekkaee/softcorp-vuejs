@@ -1,11 +1,5 @@
 <template>
-  <form
-    class="form-order in-view"
-    id="form-order"
-    action=""
-    method="POST"
-    data-observe
-  >
+  <form class="form-order" id="form-order" action="" method="POST">
     <div class="form-order__inner">
       <slot />
     </div>

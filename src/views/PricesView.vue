@@ -1,15 +1,13 @@
 <script lang="ts">
-import About from "@/components/About.vue";
+import Prices from "@/components/Prices.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AboutView",
-  components: {
-    About,
-  },
+  name: "PricesView",
+  components: { Prices },
 });
 </script>
 
 <template>
-  <About />
+  <Prices />
 </template>

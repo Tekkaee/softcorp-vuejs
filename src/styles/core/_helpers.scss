@@ -11,3 +11,8 @@
 @mixin background-circles-with-space($point-size, $margin-right) {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="#{calc(6px + $margin-right)}" height="6px"><circle cx="3.01111" cy="3" r="3" fill="%23FFE5E5E5"/></svg>');
 }
+
+%text {
+  font-size: 13px;
+  line-height: 15.6px;
+}

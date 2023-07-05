@@ -6,4 +6,9 @@ export enum IconTypes {
   step5 = "step5",
   file = "file",
   chevron = "chevron",
+  qiwi = "qiwi",
+  yandex = "yandex",
+  webMoney = "webMoney",
+  mail = "mail",
+  vk = "vk",
 }

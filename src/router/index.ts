@@ -47,17 +47,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: RouteList.makeOrder,
     name: "makeOrder",
-    component: () => import("../views/AboutView.vue"),
+    component: () => import("../views/MakeOrderView.vue"),
   },
   {
     path: RouteList.prices,
     name: "prices",
-    component: () => import("../views/AboutView.vue"),
+    component: () => import("../views/PricesView.vue"),
   },
   {
     path: RouteList.business,
     name: "business",
-    component: () => import("../views/AboutView.vue"),
+    component: () => import("../views/BusinessView.vue"),
   },
   {
     path: "/:catchAll(.*)",

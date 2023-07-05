@@ -7,6 +7,10 @@ $font-path: '@/assets/fonts';
   outline: none;
 }
 
+ul, li {
+  list-style-type: none;
+}
+
 @font-face {
   font-family: "Lato";
   font-style: normal;

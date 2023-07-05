@@ -1,15 +1,13 @@
 <script lang="ts">
-import About from "@/components/About.vue";
+import Business from "@/components/Business.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AboutView",
-  components: {
-    About,
-  },
+  name: "BusinessView",
+  components: { Business },
 });
 </script>
 
 <template>
-  <About />
+  <Business />
 </template>

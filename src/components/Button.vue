@@ -5,13 +5,8 @@
 </template>
 
 <script lang="ts">
+import { TagType } from "@/types/Elements";
 import { PropType } from "vue";
-
-export enum TagType {
-  a = "a",
-  button = "button",
-  div = "div",
-}
 
 export enum VariantType {
   default = "default",

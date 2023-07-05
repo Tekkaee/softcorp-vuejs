@@ -1,15 +1,13 @@
 <script lang="ts">
-import About from "@/components/About.vue";
+import MakeOrder from "@/components/MakeOrder.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AboutView",
-  components: {
-    About,
-  },
+  name: "MakeOrderView",
+  components: { MakeOrder },
 });
 </script>
 
 <template>
-  <About />
+  <MakeOrder />
 </template>

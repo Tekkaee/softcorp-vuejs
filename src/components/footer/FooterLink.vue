@@ -26,7 +26,7 @@ export default {
     {{ title }}
   </li>
   <li v-else>
-    <a :href="link" class="footer__item">
+    <a :href="link" class="footer__item" target="_blank">
       <Icons class="footer__icon" :name="icon" />
       {{ title }}
     </a>

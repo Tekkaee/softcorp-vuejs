@@ -1,20 +1,15 @@
 <script lang="ts">
-import File from "@/components/form/File.vue";
 import Form from "@/components/form/Form.vue";
-import Input from "@/components/form/Input.vue";
-import Range from "@/components/form/Range.vue";
-import Select from "@/components/form/Select.vue";
 import StepList from "@/components/steps/StepList.vue";
 import { SELECT_OPTIONS } from "@/data/select-options";
-import { defineComponent, onMounted, ref } from "vue";
-import { useIntersectionObserver } from "@vueuse/core";
+import { defineComponent } from "vue";
 export default defineComponent({
   computed: {
     SELECT_OPTIONS() {
       return SELECT_OPTIONS;
     },
   },
-  components: { Range, Select, File, Form, Input, StepList },
+  components: { Form, StepList },
 });
 </script>
 
@@ -32,18 +27,7 @@ export default defineComponent({
       <div class="steps-order order__steps" data-observe>
         <StepList />
       </div>
-      <Form class="order__form" data-observe>
-        <Select
-          name="system-type"
-          id="system-type"
-          required
-          :options="SELECT_OPTIONS"
-        />
-        <Input name="email" id="email" required placeholder="Ваш e-mail" />
-        <Input name="name" id="name" required placeholder="Ваше имя" />
-        <Range name="percentage" id="percentage" />
-        <File name="file" id="file" required />
-      </Form>
+      <Form class="order__form" data-observe />
     </div>
   </section>
 </template>

@@ -1,7 +1,84 @@
+<script lang="ts">
+import Button from "@/components/Button.vue";
+import File from "@/components/form/File.vue";
+import input from "@/components/form/Input.vue";
+import Input from "@/components/form/Input.vue";
+import Range from "@/components/form/Range.vue";
+import select from "@/components/form/Select.vue";
+import Select from "@/components/form/Select.vue";
+import { SELECT_OPTIONS } from "@/data/select-options";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  computed: {
+    select() {
+      return select;
+    },
+    input() {
+      return input;
+    },
+    SELECT_OPTIONS() {
+      return SELECT_OPTIONS;
+    },
+  },
+  components: { File, Select, Input, Range, Button },
+  methods: {
+    getFormValues() {
+      console.log(`select value: ${this.selectValue}`);
+      console.log(`email value: ${this.emailValue}`);
+      console.log(`name value: ${this.nameValue}`);
+      console.log(`file value: ${this.fileValue}`);
+      console.log(`range value: ${this.rangeValue}`);
+    },
+  },
+  data: () => ({
+    selectValue: "",
+    emailValue: "",
+    nameValue: "",
+    fileValue: "",
+    rangeValue: 25,
+  }),
+});
+</script>
+
 <template>
-  <form class="form-order" id="form-order" action="" method="POST">
+  <form
+    @submit.prevent="getFormValues"
+    class="form-order"
+    id="form-order"
+    action=""
+    method="POST"
+  >
     <div class="form-order__inner">
-      <slot />
+      <Select
+        v-model:input="selectValue"
+        name="system-type"
+        id="system-type"
+        required
+        :options="SELECT_OPTIONS"
+      />
+      <Input
+        v-model:input="emailValue"
+        name="email"
+        id="email"
+        type="email"
+        required
+        placeholder="Ваш e-mail"
+      />
+      <Input
+        v-model:input="nameValue"
+        name="name"
+        id="name"
+        required
+        placeholder="Ваше имя"
+      />
+      <Range
+        v-model:input="rangeValue"
+        class="form-order__item--2x"
+        name="percentage"
+        id="percentage"
+      />
+      <File v-model:input="fileValue" name="file" id="file" required />
     </div>
     <Button
       as="button"
@@ -14,15 +91,6 @@
     </Button>
   </form>
 </template>
-
-<script lang="ts">
-import Button from "@/components/Button.vue";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  components: { Button },
-});
-</script>
 
 <style lang="scss">
 @import "@/styles/core/support";

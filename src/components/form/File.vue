@@ -1,44 +1,39 @@
-<script lang="ts">
+<script setup lang="ts">
 import Button from "@/components/Button.vue";
 import Icons from "@/components/icons/Icons.vue";
-import { ref } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
 
 const target = ref<HTMLInputElement | null>(null);
 const fileName = ref<string | null>(null);
 
-export default {
-  components: { Button, Icons },
-  props: {
-    required: {
-      type: Boolean,
-      default: true,
-    },
-    name: {
-      type: String,
-    },
-    id: {
-      type: String,
-    },
-    title: {
-      type: String,
-      default: "Прикрепить файл",
-    },
+defineProps({
+  required: {
+    type: Boolean,
+    default: true,
   },
-  setup() {
-    function changeValue(value: any) {
-      fileName.value = value.target.files[0].name;
-    }
-
-    function reset(e: Event) {
-      e.stopPropagation();
-      e.preventDefault();
-      fileName.value = null;
-      if (target.value?.files) target.value.value = "";
-    }
-
-    return { target, changeValue, fileName, reset };
+  name: {
+    type: String,
   },
-};
+  id: {
+    type: String,
+  },
+  title: {
+    type: String,
+    default: "Прикрепить файл",
+  },
+});
+
+const emit = defineEmits(["update:input"]);
+function changeValue(value: any) {
+  fileName.value = value.target.files[0].name;
+  emit("update:input", value.target.files[0]);
+}
+function reset(e: Event) {
+  e.stopPropagation();
+  e.preventDefault();
+  fileName.value = null;
+  if (target.value?.files) target.value.value = "";
+}
 </script>
 
 <template>

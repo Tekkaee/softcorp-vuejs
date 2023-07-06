@@ -1,5 +1,39 @@
+<script setup lang="ts">
+import { ref, defineEmits, defineProps } from "vue";
+const target = ref<HTMLInputElement | null>(null);
+const currentValue = ref(25);
+
+defineProps({
+  min: {
+    type: Number,
+    default: 0,
+  },
+  max: {
+    type: Number,
+    default: 100,
+  },
+  id: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  defaultValue: {
+    type: Number,
+    default: 25,
+  },
+});
+
+const emit = defineEmits(["update:input"]);
+
+function changeValue(value: any) {
+  currentValue.value = parseInt(value?.target?.value);
+  emit("update:input", value?.target?.value);
+}
+</script>
+
 <template>
-  <div class="form-order__item form-order__item--range form-order__item--2x">
+  <div class="form-order__item form-order__item--range">
     <p class="form-order__value">{{ currentValue }} %</p>
     <input
       ref="target"
@@ -17,41 +51,6 @@
     />
   </div>
 </template>
-
-<script lang="ts">
-import { ref } from "vue";
-const target = ref<HTMLInputElement | null>(null);
-const currentValue = ref(25);
-export default {
-  props: {
-    min: {
-      type: Number,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      default: 100,
-    },
-    id: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
-    defaultValue: {
-      type: Number,
-      default: 25,
-    },
-  },
-  setup() {
-    function changeValue(value: any) {
-      currentValue.value = parseInt(value?.target?.value);
-    }
-
-    return { target, currentValue, changeValue };
-  },
-};
-</script>
 
 <style lang="scss">
 @import "@/styles/core/support";

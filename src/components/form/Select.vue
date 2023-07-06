@@ -1,75 +1,76 @@
-<script lang="ts">
+<script setup lang="ts">
 import Icons from "@/components/icons/Icons.vue";
 import { SelectOptionsProps } from "@/data/select-options";
-import { onMounted, PropType, ref } from "vue";
+import { onMounted, PropType, ref, defineProps, defineEmits } from "vue";
 import { onClickOutside, useElementBounding } from "@vueuse/core";
 
-export default {
-  setup() {
-    const isOpen = ref(false);
-    const target = ref<HTMLSelectElement | null>(null);
-    const toTop = ref(false);
-    const { top, height } = useElementBounding(target);
-    const selected = ref<SelectOptionsProps | null>(null);
+const isOpen = ref(false);
+const target = ref<HTMLSelectElement | null>(null);
+const toTop = ref(false);
+const { top, height } = useElementBounding(target);
+const selected = ref<SelectOptionsProps | null>(null);
 
-    onClickOutside(target, (event: MouseEvent) => isOpen.value && toggleView());
+onMounted(() => {
+  if (target?.value) target.value.selectedIndex = -1;
+});
 
-    onMounted(() => target.value && target.value?.selectedIndex);
+const emit = defineEmits(["update:input"]);
 
-    function toggleView() {
-      let shouldBeOpenToTop: boolean =
-        top.value + height.value / 2 >
-        document.documentElement.clientHeight / 1.5;
+onClickOutside(target, () => isOpen.value && toggleView());
 
-      if (shouldBeOpenToTop && !toTop.value) toTop.value = true;
-      if (!shouldBeOpenToTop && toTop.value) toTop.value = false;
-
-      isOpen.value = !isOpen.value;
-    }
-
-    function setValue(value: SelectOptionsProps) {
-      selected.value = value;
-    }
-
-    return { target, isOpen, toggleView, selected, setValue, toTop };
-  },
-  components: { Icons },
-  props: {
-    options: {
-      type: [] as PropType<SelectOptionsProps[]>,
-      default: [],
-    },
-    id: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
-    required: {
-      type: Boolean,
-    },
-    placeholder: {
-      type: String,
-      default: "Выберите тип системы",
-    },
-  },
+const setValue = (value: SelectOptionsProps) => {
+  selected.value = value;
+  emit("update:input", selected.value.value);
+  toggleView();
 };
+
+function toggleView() {
+  let shouldBeOpenToTop: boolean =
+    top.value + height.value / 2 > document.documentElement.clientHeight / 1.5;
+
+  if (shouldBeOpenToTop && !toTop.value) toTop.value = true;
+  if (!shouldBeOpenToTop && toTop.value) toTop.value = false;
+
+  isOpen.value = !isOpen.value;
+}
+
+defineProps({
+  options: {
+    type: [] as PropType<SelectOptionsProps[]>,
+    default: [],
+  },
+  id: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  placeholder: {
+    type: String,
+    default: "Выберите тип системы",
+  },
+});
 </script>
 
 <template>
-  <div
-    ref="target"
-    class="form-order__item form-order__item--select"
-    @click="toggleView"
-  >
+  <div class="form-order__item form-order__item--select" @click="toggleView">
     <div class="select">
-      <select required :name="name" :id="id" aria-label="Type">
+      <select
+        ref="target"
+        :required="required"
+        :name="name"
+        :id="id"
+        aria-label="Type"
+      >
         <option
-          :name="name"
           v-for="(option, index) in options"
           :key="index"
           :value="option.value"
-          selected="selected"
+          :selected="selected"
         >
           {{ option.title }}
         </option>

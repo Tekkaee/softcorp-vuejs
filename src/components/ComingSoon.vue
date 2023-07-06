@@ -14,6 +14,11 @@ export default {
 <template>
   <div class="coming-soon">
     <picture class="coming-soon__picture">
+      <source
+        type="image/webp"
+        media="(max-width: 767px)"
+        srcset="@/assets/images/coming-soon-mobile.png"
+      />
       <img
         class="coming-soon__image"
         src="../assets/images/coming-soon-desktop.png"

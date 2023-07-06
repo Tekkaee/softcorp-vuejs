@@ -1,44 +1,50 @@
+<script setup lang="ts">
+import { defineProps, defineEmits } from "vue";
+
+const emit = defineEmits(["update:input"]);
+const props = defineProps({
+  type: {
+    type: String,
+  },
+  value: {
+    type: String,
+    default: "",
+  },
+  required: {
+    type: Boolean,
+    default: true,
+  },
+  name: {
+    type: String,
+  },
+  id: {
+    type: String,
+  },
+  placeholder: {
+    type: String,
+    default: "Type..",
+  },
+});
+function onChange(event: any) {
+  emit("update:input", event.target.value);
+}
+</script>
+
 <template>
   <label :for="name" class="form-order__item">
     <input
-      :id="id"
-      :name="name"
+      :id="props.id"
+      :name="props.name"
       placeholder=" "
-      type="text"
-      :required="required"
+      :type="props.type ?? 'text'"
+      :required="props.required"
       class="input input--default"
       aria-label="Name"
-      :value="value"
+      @input="onChange"
     />
     <span class="form-order__placeholder">{{ placeholder }}</span>
   </label>
 </template>
-
-<script lang="ts">
-export default {
-  props: {
-    type: {},
-    value: {
-      type: String,
-      default: "",
-    },
-    required: {
-      type: Boolean,
-      default: true,
-    },
-    name: {
-      type: String,
-    },
-    id: {
-      type: String,
-    },
-    placeholder: {
-      type: String,
-      default: "Type..",
-    },
-  },
-};
-</script>
 
 <style lang="scss">
 @import "@/styles/core/support";

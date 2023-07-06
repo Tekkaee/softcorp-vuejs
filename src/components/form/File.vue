@@ -43,7 +43,7 @@ const reset = (e: Event) => {
 </script>
 
 <template>
-  <label for="file" class="form-order__item">
+  <label for="file">
     <input
       ref="target"
       :id="id"
@@ -89,18 +89,6 @@ const reset = (e: Event) => {
 
   &--select {
     z-index: 1;
-  }
-
-  @include desktop-and-laptop {
-    filter: blur(5px);
-
-    transition: 0.3s ease;
-  }
-
-  .in-view & {
-    @include desktop-and-laptop {
-      filter: blur(0);
-    }
   }
 
   &--2x {

@@ -7,7 +7,7 @@ import Range from "@/components/form/Range.vue";
 import select from "@/components/form/Select.vue";
 import Select from "@/components/form/Select.vue";
 import { SELECT_OPTIONS } from "@/data/select-options";
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   computed: {
@@ -23,19 +23,18 @@ export default defineComponent({
   },
   components: { File, Select, Input, Range, Button },
   methods: {
-    reset() {
-      this.selectValue = "";
-      this.emailValue = "";
-      this.nameValue = "";
-      this.fileValue = "";
-      this.rangeValue = 25;
-    },
     getFormValues() {
       console.log(`select value: ${this.selectValue}`);
       console.log(`email value: ${this.emailValue}`);
       console.log(`name value: ${this.nameValue}`);
       console.log(`file value: ${this.fileValue}`);
       console.log(`range value: ${this.rangeValue}`);
+      this.forceRerender();
+    },
+    async forceRerender() {
+      this.forceReload = false;
+      await this.$nextTick();
+      this.forceReload = true;
     },
   },
   data: () => ({
@@ -44,6 +43,7 @@ export default defineComponent({
     nameValue: "",
     fileValue: "",
     rangeValue: 25,
+    forceReload: true,
   }),
 });
 </script>
@@ -55,6 +55,7 @@ export default defineComponent({
     id="form-order"
     action=""
     method="POST"
+    v-if="forceReload"
   >
     <div class="form-order__inner">
       <Select
@@ -64,6 +65,7 @@ export default defineComponent({
         required
         :options="SELECT_OPTIONS"
         ariaLabel="Type select"
+        class="form-order__item"
       />
       <Input
         v-model:input="emailValue"
@@ -73,6 +75,7 @@ export default defineComponent({
         required
         placeholder="Ваш e-mail"
         ariaLabel="E-mail input"
+        class="form-order__item"
       />
       <Input
         v-model:input="nameValue"
@@ -81,15 +84,22 @@ export default defineComponent({
         required
         placeholder="Ваше имя"
         ariaLabel="Name input"
+        class="form-order__item"
       />
       <Range
         v-model:input="rangeValue"
-        class="form-order__item--2x"
         name="percentage"
         id="percentage"
         ariaLabel="Percentage input"
+        class="form-order__item form-order__item--2x"
       />
-      <File v-model:input="fileValue" name="file" id="file" required />
+      <File
+        v-model:input="fileValue"
+        name="file"
+        id="file"
+        required
+        class="form-order__item"
+      />
     </div>
     <Button
       as="button"
@@ -113,20 +123,12 @@ export default defineComponent({
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
 
-  filter: blur(5px);
-
-  transition: 0.3s ease;
-
   @include desktop-and-laptop {
     min-width: 370px;
   }
 
   @include mobile-only {
     width: 100%;
-  }
-
-  .in-view & {
-    filter: blur(0);
   }
 }
 

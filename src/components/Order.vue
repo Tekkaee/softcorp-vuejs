@@ -27,7 +27,7 @@ export default defineComponent({
       <div class="steps-order order__steps" data-observe>
         <StepList />
       </div>
-      <Form class="order__form" data-observe />
+      <Form class="order__form" />
     </div>
   </section>
 </template>

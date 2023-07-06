@@ -37,7 +37,7 @@ const changeValue = (value: any) => {
 </script>
 
 <template>
-  <div class="form-order__item form-order__item--range">
+  <div class="form-order__item--range">
     <p class="form-order__value">{{ currentValue }} %</p>
     <input
       ref="target"

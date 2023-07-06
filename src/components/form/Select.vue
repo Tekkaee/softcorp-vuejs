@@ -60,7 +60,7 @@ const toggleView = () => {
 </script>
 
 <template>
-  <div class="form-order__item form-order__item--select" @click="toggleView">
+  <div class="form-order__item--select" @click="toggleView">
     <div class="select">
       <select
         ref="target"

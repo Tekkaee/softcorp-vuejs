@@ -35,7 +35,7 @@ const onChange = (event: any) => {
 </script>
 
 <template>
-  <label :for="name" class="form-order__item">
+  <label :for="name">
     <input
       :id="props.id"
       :name="props.name"
@@ -52,51 +52,6 @@ const onChange = (event: any) => {
 
 <style lang="scss">
 @import "@/styles/core/support";
-.form-order__item {
-  display: flex;
-  position: relative;
-
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-
-  @include desktop-and-laptop {
-    flex: 1 0 calc((100% - ($form-gap-desktop * 2)) / 3);
-  }
-
-  @include mobile-only {
-    width: 100%;
-  }
-
-  &--select {
-    z-index: 1;
-  }
-
-  @include desktop-and-laptop {
-    filter: blur(5px);
-
-    transition: 0.3s ease;
-  }
-
-  .in-view & {
-    @include desktop-and-laptop {
-      filter: blur(0);
-    }
-  }
-
-  &--2x {
-    flex: 1 0 calc((100% - ($form-gap-desktop * 2)) / 3 * 2 + $form-gap-desktop);
-  }
-
-  input:not(:placeholder-shown) {
-    & ~ .form-order__placeholder {
-      display: none;
-    }
-  }
-}
-
 .form-order__placeholder {
   position: absolute;
   top: 50%;

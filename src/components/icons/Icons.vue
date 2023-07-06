@@ -196,7 +196,7 @@
     />
   </svg>
   <svg
-    v-else-if="name === Icons.burger"
+    v-else-if="name === Icons.close"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@
     />
   </svg>
   <svg
-    v-else-if="name === Icons.close"
+    v-else-if="name === Icons.burger"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

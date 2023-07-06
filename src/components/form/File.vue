@@ -58,7 +58,7 @@ function reset(e: Event) {
     <div v-if="fileName" @click="reset" class="form-order__details">
       <p class="form-order__name">{{ fileName }}</p>
       <a @click="reset" href="#" class="form-order__link">
-        <Icons class="form-order__delete" name="step1" />
+        <Icons class="form-order__delete" name="close" />
       </a>
     </div>
   </label>

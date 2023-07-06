@@ -1,0 +1,79 @@
+@import "support";
+
+input,
+textarea {
+  font-family: "Lato", sans-serif;
+
+  @include desktop-and-laptop {
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+
+  @include mobile-only {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+input[type="text"],
+input[type="email"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  border: 1px solid $white-100;
+  padding: 10px 12px;
+  flex: 1;
+
+  &:invalid {
+    .form-order--submitted & {
+      border-color: red !important;
+    }
+  }
+}
+
+input[type="range"] {
+  height: 24px;
+  width: 100%;
+  background-color: transparent;
+  appearance: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  border: 1px solid $white-100;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 25px;
+  border: 1px solid $white-100;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  border: 3px solid $accent-50;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background: #42a9ed;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: 3px solid $accent-50;
+  height: 21px;
+  width: 21px;
+  border-radius: 50%;
+  background: #42a9ed;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+}

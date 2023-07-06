@@ -1,11 +1,3 @@
-<template>
-  <div class="prices">
-    <div class="container prices__container">
-      <ComingSoon page="Prices" />
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import ComingSoon from "@/components/ComingSoon.vue";
 import { defineComponent } from "vue";
@@ -17,6 +9,14 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <div class="prices">
+    <div class="container prices__container">
+      <ComingSoon page="Prices" />
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 @import "@/styles/core/support";

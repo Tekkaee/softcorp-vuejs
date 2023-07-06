@@ -15,8 +15,8 @@ const toggleView = () => (isOpenMenu.value = !isOpenMenu.value);
         <Icons name="logo" />
       </router-link>
       <div @click="toggleView" class="burger header__burger">
-        <Icons v-if="isOpenMenu" name="burger" class="icon burger__button" />
-        <Icons v-if="!isOpenMenu" name="close" class="icon burger__button" />
+        <Icons v-if="isOpenMenu" name="close" class="icon burger__button" />
+        <Icons v-if="!isOpenMenu" name="burger" class="icon burger__button" />
       </div>
       <Navbar v-model:isOpen="isOpenMenu" class="header__navigation" />
     </div>

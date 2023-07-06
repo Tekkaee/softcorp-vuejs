@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import router from "@/router";
 import { TagType, VariantType } from "@/types/Elements";
 import { PropType, defineProps } from "vue";
 

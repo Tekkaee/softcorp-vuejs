@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Button from "@/components/Button.vue";
 import NavbarItem from "@/components/navbar/NavbarItem.vue";
 import { NAVBAR_ROUTES } from "@/router";
 import { defineEmits, defineProps } from "vue";

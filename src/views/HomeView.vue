@@ -15,16 +15,13 @@ export default defineComponent({
       ) as unknown as HTMLElement[];
 
       target.value.forEach((el: any) => {
-        const { stop } = useIntersectionObserver(
-          el,
-          ([{ isIntersecting, target }], observerElement) => {
-            if (target.classList.contains("in-view")) return;
+        useIntersectionObserver(el, ([{ isIntersecting, target }]) => {
+          if (target.classList.contains("in-view")) return;
 
-            if (isIntersecting) {
-              target.classList.add("in-view");
-            }
+          if (isIntersecting) {
+            target.classList.add("in-view");
           }
-        );
+        });
       });
     });
   },

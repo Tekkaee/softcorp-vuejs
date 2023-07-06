@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Button from "@/components/Button.vue";
+</script>
+
 <template>
   <section class="welcome">
     <picture class="welcome__bg">
@@ -61,10 +65,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import Button from "@/components/Button.vue";
-</script>
 
 <style lang="scss">
 @import "@/styles/core/support";

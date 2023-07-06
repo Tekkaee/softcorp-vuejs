@@ -1,7 +1,6 @@
 <script lang="ts">
 import ComingSoon from "@/components/ComingSoon.vue";
 import { defineComponent } from "vue";
-
 export default defineComponent({
   components: { ComingSoon },
   setup() {

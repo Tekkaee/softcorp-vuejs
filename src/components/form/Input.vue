@@ -29,9 +29,9 @@ const props = defineProps({
     default: "",
   },
 });
-function onChange(event: any) {
+const onChange = (event: any) => {
   emit("update:input", event.target.value);
-}
+};
 </script>
 
 <template>

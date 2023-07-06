@@ -28,16 +28,17 @@ defineProps({
 });
 
 const emit = defineEmits(["update:input"]);
-function changeValue(value: any) {
+
+const changeValue = (value: any) => {
   fileName.value = value.target.files[0].name;
   emit("update:input", value.target.files[0]);
-}
-function reset(e: Event) {
+};
+const reset = (e: Event) => {
   e.stopPropagation();
   e.preventDefault();
   fileName.value = null;
   if (target.value?.files) target.value.value = "";
-}
+};
 </script>
 
 <template>

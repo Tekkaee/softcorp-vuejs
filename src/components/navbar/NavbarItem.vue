@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-const props = defineProps({
+defineProps({
   to: String,
 });
 </script>
@@ -8,7 +8,7 @@ const props = defineProps({
 <template>
   <li class="navigation__item">
     <router-link
-      :to="props.to"
+      :to="to"
       class="navigation__link"
       active-class="navigation__link--active"
     >

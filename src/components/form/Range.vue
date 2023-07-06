@@ -30,10 +30,10 @@ defineProps({
 
 const emit = defineEmits(["update:input"]);
 
-function changeValue(value: any) {
+const changeValue = (value: any) => {
   currentValue.value = parseInt(value?.target?.value);
   emit("update:input", value?.target?.value);
-}
+};
 </script>
 
 <template>

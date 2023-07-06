@@ -3,36 +3,11 @@ import Icons from "@/components/icons/Icons.vue";
 import { SelectOptionsProps } from "@/data/select-options";
 import { onMounted, PropType, ref, defineProps, defineEmits } from "vue";
 import { onClickOutside, useElementBounding } from "@vueuse/core";
-
 const isOpen = ref(false);
 const target = ref<HTMLSelectElement | null>(null);
 const toTop = ref(false);
 const { top, height } = useElementBounding(target);
 const selected = ref<SelectOptionsProps | null>(null);
-
-onMounted(() => {
-  if (target?.value) target.value.selectedIndex = -1;
-});
-
-const emit = defineEmits(["update:input"]);
-
-onClickOutside(target, () => isOpen.value && toggleView());
-
-const setValue = (value: SelectOptionsProps) => {
-  selected.value = value;
-  emit("update:input", selected.value.value);
-  toggleView();
-};
-
-function toggleView() {
-  let shouldBeOpenToTop: boolean =
-    top.value + height.value / 2 > document.documentElement.clientHeight / 1.5;
-
-  if (shouldBeOpenToTop && !toTop.value) toTop.value = true;
-  if (!shouldBeOpenToTop && toTop.value) toTop.value = false;
-
-  isOpen.value = !isOpen.value;
-}
 
 defineProps({
   options: {
@@ -58,6 +33,30 @@ defineProps({
     default: "",
   },
 });
+
+onMounted(() => {
+  if (target?.value) target.value.selectedIndex = -1;
+});
+
+const emit = defineEmits(["update:input"]);
+
+onClickOutside(target, () => isOpen.value && toggleView());
+
+const setValue = (value: SelectOptionsProps) => {
+  selected.value = value;
+  emit("update:input", selected.value.value);
+  toggleView();
+};
+
+const toggleView = () => {
+  let shouldBeOpenToTop: boolean =
+    top.value + height.value / 2 > document.documentElement.clientHeight / 1.5;
+
+  if (shouldBeOpenToTop && !toTop.value) toTop.value = true;
+  if (!shouldBeOpenToTop && toTop.value) toTop.value = false;
+
+  isOpen.value = !isOpen.value;
+};
 </script>
 
 <template>

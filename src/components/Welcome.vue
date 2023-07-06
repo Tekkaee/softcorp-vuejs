@@ -52,8 +52,8 @@
         </div>
 
         <div class="welcome__control">
-          <Button class="welcome__button" as="a">Заказать</Button>
-          <Button class="welcome__button" as="a" variant="outline">
+          <Button class="welcome__button" to="/make-order"> Заказать </Button>
+          <Button class="welcome__button" variant="outline" to="/about">
             Подробнее
           </Button>
         </div>

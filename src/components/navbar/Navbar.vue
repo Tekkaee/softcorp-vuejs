@@ -1,10 +1,31 @@
+<script setup lang="ts">
+import Button from "@/components/Button.vue";
+import NavbarItem from "@/components/navbar/NavbarItem.vue";
+import { NAVBAR_ROUTES } from "@/router";
+import { defineEmits, defineProps } from "vue";
+
+const emit = defineEmits(["update:isOpen"]);
+
+defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const closeMenu = () => {
+  emit("update:isOpen", false);
+};
+</script>
+
 <template>
-  <nav class="navigation">
+  <nav class="navigation" :class="isOpen ? 'navigation--is-open' : ''">
     <ul class="navigation__list">
       <NavbarItem
         v-for="(route, index) in NAVBAR_ROUTES"
         :key="index"
         :to="route.path"
+        @click="closeMenu"
       >
         {{ route.title }}
       </NavbarItem>
@@ -12,26 +33,25 @@
   </nav>
 </template>
 
-<script lang="ts">
-import NavbarItem from "@/components/navbar/NavbarItem.vue";
-import { NAVBAR_ROUTES } from "@/router";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  computed: {
-    NAVBAR_ROUTES() {
-      return NAVBAR_ROUTES;
-    },
-  },
-  components: { NavbarItem },
-  setup() {
-    return {};
-  },
-});
-</script>
-
 <style lang="scss">
 @import "@/styles/core/support";
+
+.navigation {
+  @include mobile-only {
+    height: calc(100vh - $header-height-mobile);
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform: scale(0);
+    transition: all 0.2s ease;
+    transform-origin: top right;
+  }
+
+  &--is-open {
+    transform: scale(1);
+  }
+}
 
 .navigation__list {
   display: flex;

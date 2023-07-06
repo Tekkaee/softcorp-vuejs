@@ -11,4 +11,7 @@ export enum IconTypes {
   webMoney = "webMoney",
   mail = "mail",
   vk = "vk",
+  logo = "logo",
+  burger = "burger",
+  close = "close",
 }

@@ -24,6 +24,10 @@ const props = defineProps({
     type: String,
     default: "Type..",
   },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
 });
 function onChange(event: any) {
   emit("update:input", event.target.value);
@@ -39,7 +43,7 @@ function onChange(event: any) {
       :type="props.type ?? 'text'"
       :required="props.required"
       class="input input--default"
-      aria-label="Name"
+      :aria-label="props.ariaLabel"
       @input="onChange"
     />
     <span class="form-order__placeholder">{{ placeholder }}</span>

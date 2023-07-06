@@ -21,6 +21,10 @@ defineProps({
     type: String,
     default: "Прикрепить файл",
   },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["update:input"]);
@@ -44,7 +48,7 @@ function reset(e: Event) {
       :name="name"
       type="file"
       hidden="hidden"
-      aria-label="File"
+      :aria-label="ariaLabel"
       @change="changeValue"
     />
     <Button as="div" variant="outline" class="form-order__file">

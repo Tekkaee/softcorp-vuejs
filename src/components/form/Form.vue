@@ -7,7 +7,9 @@ import Range from "@/components/form/Range.vue";
 import select from "@/components/form/Select.vue";
 import Select from "@/components/form/Select.vue";
 import { SELECT_OPTIONS } from "@/data/select-options";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+
+const formRef = ref<HTMLFormElement | null>(null);
 
 export default defineComponent({
   computed: {
@@ -23,6 +25,9 @@ export default defineComponent({
   },
   components: { File, Select, Input, Range, Button },
   methods: {
+    reset() {
+      if (formRef.value) formRef.value.reset();
+    },
     getFormValues() {
       console.log(`select value: ${this.selectValue}`);
       console.log(`email value: ${this.emailValue}`);
@@ -48,6 +53,7 @@ export default defineComponent({
     id="form-order"
     action=""
     method="POST"
+    ref="formRef"
   >
     <div class="form-order__inner">
       <Select
@@ -56,6 +62,7 @@ export default defineComponent({
         id="system-type"
         required
         :options="SELECT_OPTIONS"
+        ariaLabel="Type select"
       />
       <Input
         v-model:input="emailValue"
@@ -64,6 +71,7 @@ export default defineComponent({
         type="email"
         required
         placeholder="Ваш e-mail"
+        ariaLabel="E-mail input"
       />
       <Input
         v-model:input="nameValue"
@@ -71,12 +79,14 @@ export default defineComponent({
         id="name"
         required
         placeholder="Ваше имя"
+        ariaLabel="Name input"
       />
       <Range
         v-model:input="rangeValue"
         class="form-order__item--2x"
         name="percentage"
         id="percentage"
+        ariaLabel="Percentage input"
       />
       <File v-model:input="fileValue" name="file" id="file" required />
     </div>

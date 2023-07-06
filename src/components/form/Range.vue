@@ -22,6 +22,10 @@ defineProps({
     type: Number,
     default: 25,
   },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["update:input"]);
@@ -45,7 +49,7 @@ function changeValue(value: any) {
       step="1"
       class="form-order__item"
       type="range"
-      aria-label="Percentage"
+      :aria-label="ariaLabel"
       @input="changeValue"
       @change="changeValue"
     />

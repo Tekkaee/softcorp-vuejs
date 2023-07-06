@@ -53,6 +53,10 @@ defineProps({
     type: String,
     default: "Выберите тип системы",
   },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
 });
 </script>
 
@@ -64,7 +68,7 @@ defineProps({
         :required="required"
         :name="name"
         :id="id"
-        aria-label="Type"
+        :aria-label="ariaLabel"
       >
         <option
           v-for="(option, index) in options"

@@ -38,6 +38,7 @@ const reset = (e: Event) => {
   e.preventDefault();
   fileName.value = null;
   if (target.value?.files) target.value.value = "";
+  emit("update:input", null);
 };
 </script>
 

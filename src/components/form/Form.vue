@@ -9,8 +9,6 @@ import Select from "@/components/form/Select.vue";
 import { SELECT_OPTIONS } from "@/data/select-options";
 import { defineComponent, ref } from "vue";
 
-const formRef = ref<HTMLFormElement | null>(null);
-
 export default defineComponent({
   computed: {
     select() {
@@ -26,7 +24,11 @@ export default defineComponent({
   components: { File, Select, Input, Range, Button },
   methods: {
     reset() {
-      if (formRef.value) formRef.value.reset();
+      this.selectValue = "";
+      this.emailValue = "";
+      this.nameValue = "";
+      this.fileValue = "";
+      this.rangeValue = 25;
     },
     getFormValues() {
       console.log(`select value: ${this.selectValue}`);
@@ -53,7 +55,6 @@ export default defineComponent({
     id="form-order"
     action=""
     method="POST"
-    ref="formRef"
   >
     <div class="form-order__inner">
       <Select
